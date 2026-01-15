@@ -1,0 +1,30 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/image/(.*)",
+      "dest": "/api/image/[id].py"
+    },
+    {
+      "src": "/api/view/(.*)",
+      "dest": "/api/view/[id].py"
+    },
+    {
+      "src": "/api/delete/(.*)",
+      "dest": "/api/delete/[id].py"
+    },
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/$1.py"
+    }
+  ],
+  "env": {
+    "MONGO_URI": "@mongo_uri"
+  }
+}
